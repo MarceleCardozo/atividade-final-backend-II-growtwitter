@@ -1,7 +1,9 @@
 import { v4 as createUuid } from "uuid";
+import Tweet from "./Tweet";
 
 class User {
   private id: string;
+  private tweets: Tweet[];
 
   constructor(
     private name: string,
@@ -10,6 +12,7 @@ class User {
     private password: number
   ) {
     this.id = createUuid();
+    this.tweets = [];
   }
 
   public getDetails() {
@@ -19,7 +22,12 @@ class User {
       email: this.email,
       username: this.username,
       password: this.password,
+      tweets: this.tweets,
     };
+  }
+
+  public addTweet(tweet: Tweet) {
+    this.tweets.push(tweet);
   }
 }
 
