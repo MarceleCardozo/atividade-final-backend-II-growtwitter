@@ -22,3 +22,7 @@ TweetController.register(user1, tweet1);
 TweetController.register(user1, tweet2);
 
 console.log(user1.getDetails().tweets);
+
+console.log("---------FEATURE 3---------");
+
+TweetController.show(user1, tweet1);
