@@ -15,13 +15,13 @@ UserController.register(user2);
 
 console.log("---------FEATURE 2---------");
 
-const tweet1 = new Tweet("Tweet1", "normal");
-const tweet2 = new Tweet("Tweet2", "reply");
+const tweet1 = new Tweet("Tweet um", "normal");
+const tweet2 = new Tweet("Tweet dois", "normal");
 
 TweetController.register(user1, tweet1);
 TweetController.register(user1, tweet2);
 
-console.log(user1.getDetails().tweets);
+TweetController.list(user1);
 
 console.log("---------FEATURE 3---------");
 
