@@ -4,6 +4,7 @@ import tweets from "../data/tweets";
 
 class User {
   private id: string;
+  private followers: User[] = [];
 
   constructor(
     private name: string,
@@ -27,6 +28,16 @@ class User {
   public sendTweet(tweet: Tweet) {
     tweet.setAuthorId(this.getDetails().id);
     tweets.push(tweet);
+  }
+
+  public followUser(user: User) {
+    if (user !== this && !this.followers.includes(user)) {
+      this.followers.push(user);
+    }
+  }
+
+  public getFollowers() {
+    return this.followers;
   }
 }
 
