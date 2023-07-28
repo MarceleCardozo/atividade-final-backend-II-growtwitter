@@ -31,7 +31,7 @@ class User {
   }
 
   public followUser(user: User) {
-    if (user !== this && !this.followers.includes(user)) {
+    if (!this.followers.includes(user)) {
       this.followers.push(user);
     }
   }

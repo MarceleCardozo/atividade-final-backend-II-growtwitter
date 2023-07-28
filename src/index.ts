@@ -1,4 +1,5 @@
 import FollowController from "./controllers/FollowController";
+import LikeController from "./controllers/LikeController";
 import TweetController from "./controllers/TweetController";
 import UserController from "./controllers/UserController";
 import Tweet from "./models/Tweet";
@@ -40,3 +41,13 @@ FollowController.register(user4, user1);
 
 FollowController.show(user1);
 FollowController.show(user3);
+
+console.log("---------FEATURE 5---------");
+
+LikeController.register(user1, tweet1);
+LikeController.register(user3, tweet1);
+LikeController.register(user4, tweet1);
+LikeController.register(user3, tweet2);
+
+LikeController.show(tweet1);
+LikeController.show(tweet2);
