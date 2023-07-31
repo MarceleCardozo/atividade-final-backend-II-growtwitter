@@ -37,7 +37,7 @@ console.log("---------FEATURE 4---------");
 
 FollowController.register(user1, user3);
 FollowController.register(user3, user1);
-FollowController.register(user4, user1);
+FollowController.register(user1, user4);
 
 FollowController.show(user1);
 FollowController.show(user3);
