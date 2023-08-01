@@ -1,5 +1,6 @@
 import FollowController from "./controllers/FollowController";
 import LikeController from "./controllers/LikeController";
+import ReplyController from "./controllers/ReplyController";
 import TweetController from "./controllers/TweetController";
 import UserController from "./controllers/UserController";
 import Tweet from "./models/Tweet";
@@ -51,3 +52,7 @@ LikeController.register(user3, tweet2);
 
 LikeController.show(tweet1);
 LikeController.show(tweet2);
+
+console.log("---------FEATURE 6---------");
+
+ReplyController.replyToTweet(user3, tweet2, "Hello");
