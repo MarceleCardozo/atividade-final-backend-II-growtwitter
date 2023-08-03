@@ -3,6 +3,7 @@ import User from "../models/User";
 import users from "../data/users";
 import tweets from "../data/tweets";
 import LikeController from "./LikeController";
+import ReplyController from "./ReplyController";
 
 class TweetController {
   public register(user: User, tweet: Tweet) {
@@ -26,9 +27,11 @@ class TweetController {
       const authorUsername = getUsername.getDetails().username;
       const content = tweet.getDetails().content;
       const likes = LikeController.show(tweet);
-
-      const showTweet = `@${authorUsername}: ${content}
-      ${likes}`;
+      const replies = ReplyController.formatReplies(tweet.getReplies(), "> "); // Adicionando o caractere ">" como indicador de resposta
+      const showTweet = `@${authorUsername}: ${content}\n[${likes}]\n      ${replies.replace(
+        /\n/g,
+        "\n      "
+      )}`;
       console.log(showTweet);
     }
   }
