@@ -56,3 +56,11 @@ LikeController.show(tweet2);
 console.log("---------FEATURE 6---------");
 
 ReplyController.replyToTweet(user3, tweet2, "Hello");
+
+console.log("---------FEATURE 7---------");
+
+const tweet3 = new Tweet("Pelo amor de Deus, funciona!", "normal");
+TweetController.register(user3, tweet3);
+LikeController.register(user1, tweet3);
+LikeController.register(user4, tweet3);
+TweetController.show(user3, tweet3);

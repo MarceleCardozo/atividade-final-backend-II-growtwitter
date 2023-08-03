@@ -2,6 +2,7 @@ import Tweet from "../models/Tweet";
 import User from "../models/User";
 import users from "../data/users";
 import tweets from "../data/tweets";
+import LikeController from "./LikeController";
 
 class TweetController {
   public register(user: User, tweet: Tweet) {
@@ -10,12 +11,8 @@ class TweetController {
     );
 
     if (getIdUser) {
-      const newTweet = new Tweet(
-        tweet.getDetails().content,
-        tweet.getDetails().type
-      );
-      getIdUser.sendTweet(newTweet);
-      return newTweet;
+      user.sendTweet(tweet);
+      return tweet;
     }
     return null;
   }
@@ -26,11 +23,12 @@ class TweetController {
     );
 
     if (getUsername) {
-      const showTweet = `@${getUsername.getDetails().username}: ${
-        tweet.getDetails().content
-      }
-      <likes>
-      <replies>`;
+      const authorUsername = getUsername.getDetails().username;
+      const content = tweet.getDetails().content;
+      const likes = LikeController.show(tweet);
+
+      const showTweet = `@${authorUsername}: ${content}
+      ${likes}`;
       console.log(showTweet);
     }
   }
