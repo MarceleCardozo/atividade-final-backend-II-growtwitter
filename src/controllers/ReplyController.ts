@@ -26,12 +26,12 @@ class ReplyController {
       const replyTweet = new Tweet(content, "reply");
       replyTweet.setAuthorId(currentUser.getDetails().id);
 
-      const reply = new Reply(content, user, originalTweet.getId());
+      const reply = new Reply(content, user, originalTweet.getDetails().id);
       originalTweet.reply(reply);
 
       TweetController.register(user, replyTweet);
 
-      const repliesInfo = this.formatReplies(originalTweet.getReplies(), "> "); // Adicionando o caractere ">" como indicador de resposta
+      const repliesInfo = this.formatReplies(originalTweet.getReplies(), "> ");
       return repliesInfo;
     }
   }

@@ -27,7 +27,7 @@ class TweetController {
       const authorUsername = getUsername.getDetails().username;
       const content = tweet.getDetails().content;
       const likes = LikeController.show(tweet);
-      const replies = ReplyController.formatReplies(tweet.getReplies(), "> "); // Adicionando o caractere ">" como indicador de resposta
+      const replies = ReplyController.formatReplies(tweet.getReplies(), "> ");
       const showTweet = `@${authorUsername}: ${content}\n[${likes}]\n      ${replies.replace(
         /\n/g,
         "\n      "
@@ -38,7 +38,7 @@ class TweetController {
 
   public list(user: User) {
     const userTweets = tweets.filter(
-      (tweet) => tweet.getAuthorId() === user.getDetails().id
+      (tweet) => tweet.getDetails().authorId === user.getDetails().id
     );
 
     userTweets.forEach((tweet) => {

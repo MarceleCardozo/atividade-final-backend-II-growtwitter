@@ -17,7 +17,7 @@ class LikeController {
   }
 
   public show(tweet: Tweet) {
-    const likes = tweet.getLikes();
+    const likes = tweet.getDetails().likes;
 
     let likesInfo = "";
 

@@ -2,12 +2,6 @@ import FollowMiddleware from "../middlewares/followMiddleware";
 import User from "../models/User";
 
 class FollowController {
-  private followingMap: { [userId: string]: User[] };
-
-  constructor() {
-    this.followingMap = {};
-  }
-
   public register(follower: User, userFollowed: User) {
     if (
       !FollowMiddleware.validateUserExists(follower) ||
@@ -24,12 +18,10 @@ class FollowController {
       return;
     }
 
-    const followerId = follower.getDetails().id;
-    const followingList = this.followingMap[followerId] || [];
+    const followingList = follower.getFollowing();
     if (!followingList.includes(userFollowed)) {
       followingList.push(userFollowed);
     }
-    this.followingMap[followerId] = followingList;
 
     console.log(
       `${follower.getDetails().username} está seguindo ${
@@ -40,7 +32,7 @@ class FollowController {
 
   public show(user: User) {
     const followerId = user.getDetails().id;
-    const following = this.followingMap[followerId];
+    const following = user.getFollowing();
 
     if (!following || following.length === 0) {
       console.log(`${user.getDetails().username} não está seguindo ninguém.`);

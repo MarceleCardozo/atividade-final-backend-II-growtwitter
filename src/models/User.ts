@@ -30,12 +30,6 @@ class User {
     tweets.push(tweet);
   }
 
-  public followUser(user: User) {
-    if (!this.following.includes(user)) {
-      this.following.push(user);
-    }
-  }
-
   public getFollowing() {
     return this.following;
   }

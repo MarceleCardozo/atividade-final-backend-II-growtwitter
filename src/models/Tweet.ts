@@ -13,10 +13,6 @@ class Tweet {
     this.id = createUuid();
   }
 
-  public getId() {
-    return this.id;
-  }
-
   public getDetails() {
     return {
       id: this.id,
@@ -39,14 +35,6 @@ class Tweet {
 
   public setAuthorId(authorId: string) {
     this.authorId = authorId;
-  }
-
-  public getAuthorId() {
-    return this.authorId;
-  }
-
-  public getLikes() {
-    return this.likes;
   }
 
   public getReplies() {
